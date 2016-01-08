@@ -1,7 +1,7 @@
 # React Redux SPA Training Seed
 This project provides necessary startup seed for conducting react redux SPA traning
 
-## React Training Pre-requisits
+## React Training Pre-requisite
 Please install the following prior to our training section
 * install git https://git-scm.com/downloads
 * Install Python 2.7 https://www.python.org/downloads/
