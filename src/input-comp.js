@@ -6,12 +6,8 @@ class InputComp extends React.Component {
     super();
   }
 
-  changeInput() {
-    console.log('Hello');
-  }
-
   render() {
-    return (<input type="text" onChange={this.changeInput}/>);
+    return (<input type="text" ref="inp"/>);
   }
 }
 export default InputComp;
