@@ -6,10 +6,11 @@ class MainComp extends React.Component {
 
   constructor() {
     super();
+    this.clickButton = this.clickButton.bind(this);
   }
 
   clickButton() {
-      alert({this.refs.inp1.refs.inp.value});
+      alert(this.refs.inp1.refs.inp.value);
   }
 
   render() {
