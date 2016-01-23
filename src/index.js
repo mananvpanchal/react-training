@@ -4,12 +4,16 @@ import InputComp from './input-comp';
 
 class MainComp extends React.Component {
 
+  constructor() {
+    super();
+  }
+
   clickButton() {
-      alert('Hello');
+      alert({this.refs.inp1.refs.inp.value});
   }
 
   render() {
-    return (<div><InputComp/><button onClick={this.clickButton}>Click</button></div>);
+    return (<div><InputComp ref="inp1"/><button onClick={this.clickButton}>Click</button></div>);
   }
 }
 
