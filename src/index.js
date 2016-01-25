@@ -1,23 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import InputComp from './input-comp';
-import ListComp from './list-comp';
+import { Router, Route, Link } from 'react-router';
+import Login from './login';
+import Home from './home';
 
-class MainComp extends React.Component {
-
-  constructor() {
-    super();
-    this.clickButton = this.clickButton.bind(this);
-  }
-
-  clickButton() {
-    //  alert(this.refs.inp1.refs.inp.value);
-    this.refs.list.addItem(this.refs.inp1.refs.inp.value);
-  }
-
+class Index extends React.Component {
   render() {
-    return (<div><ListComp ref="list"/><InputComp ref="inp1"/><button onClick={this.clickButton}>Click</button></div>);
+    return (<div>
+        <ul>
+          <li><Link to="/login">Login</Link></li>
+          <li><Link to="/home">Home</Link></li>
+        </ul>
+        {this.props.children}
+      </div>);
   }
 }
 
-ReactDOM.render(<MainComp />, document.getElementById('app'));
+ReactDOM.render(<Router>
+  <Route path="/" component={Index}>
+    <Route path="login" component={Login}/>
+    <Route path="home" component={Home}/>
+  </Route>
+</Router>, document.getElementById('app'));
