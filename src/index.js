@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import InputComp from './input-comp';
+import ListComp from './list-comp';
 
 class MainComp extends React.Component {
 
@@ -10,11 +11,12 @@ class MainComp extends React.Component {
   }
 
   clickButton() {
-      alert(this.refs.inp1.refs.inp.value);
+    //  alert(this.refs.inp1.refs.inp.value);
+    this.refs.list.addItem(this.refs.inp1.refs.inp.value);
   }
 
   render() {
-    return (<div><InputComp ref="inp1"/><button onClick={this.clickButton}>Click</button></div>);
+    return (<div><ListComp ref="list"/><InputComp ref="inp1"/><button onClick={this.clickButton}>Click</button></div>);
   }
 }
 
