@@ -8,12 +8,8 @@ class TodoApp extends React.Component {
     super();
   }
 
-  addItem() {
-    const value = this.refs.input.getTodoValue();
-    this.refs.list.addItem(value);
-  }
   render() {
-    return (<div><TodoInput ref="input" addItem={this.addItem.bind(this)} /><TodoList ref="list" /></div>);
+    return (<div><TodoInput /><TodoList /></div>);
   }
 }
 export default TodoApp;

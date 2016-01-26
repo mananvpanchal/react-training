@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoAction from '../action/todo-action';
 
 class TodoInput extends React.Component {
 
@@ -6,12 +7,12 @@ class TodoInput extends React.Component {
     super();
   }
 
-  getTodoValue() {
-    return this.refs.inp.value;
+  addItem() {
+    TodoAction.addItem(this.refs.inp.value);
   }
 
   render() {
-    return (<div><input type="text" ref="inp"/><button onClick={this.props.addItem}>Add</button></div>);
+    return (<div><input type="text" ref="inp"/><button onClick={this.addItem.bind(this)}>Add</button></div>);
   }
 }
 export default TodoInput;
