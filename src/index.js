@@ -5,16 +5,30 @@ import Login from './login';
 import Home from './home';
 
 class Index extends React.Component {
+
+  constructor(props, context) {
+    super(props, context);
+  }
+
+  tranitionButtonClick() {
+    this.context.router.transitionTo('/home');
+  }
+
   render() {
     return (<div>
         <ul>
           <li><Link to="/login">Login</Link></li>
           <li><Link to="/home">Home</Link></li>
         </ul>
+        <button onClick={this.tranitionButtonClick.bind(this)}>Transition to Home</button>
         {this.props.children}
       </div>);
   }
 }
+
+Index.contextTypes = {
+  router: React.PropTypes.func.isRequired
+};
 
 ReactDOM.render(<Router>
   <Route path="/" component={Index}>
