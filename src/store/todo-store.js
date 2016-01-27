@@ -21,7 +21,7 @@ const TodoStore = Object.assign(EventEmitter.prototype, {
   },
 
   removeChangeListener(callback) {
-    this.removeChangeListener(callback);
+    this.removeListener(STORE_CHANGE, callback);
   },
 
   _addItem(item) {
