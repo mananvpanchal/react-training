@@ -1,9 +1,8 @@
 import * as Constants from '../constants';
-import { dispatch } from '../dispatcher/todo-dispatcher';
+import { store } from '../store/todo-store';
 
 export default {
   addItem(item) {
-    // console.log(item + ' hello');
-    dispatch({ actionType: Constants.ADD_ITEM, item });
+    store.dispatch({ type: Constants.ADD_ITEM, item });
   }
 };

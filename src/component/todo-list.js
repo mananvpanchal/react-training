@@ -1,28 +1,25 @@
 import React from 'react';
-import TodoStore from '../store/todo-store';
+import { store } from '../store/todo-store';
 
 class TodoList extends React.Component {
 
   constructor() {
     super();
-    this.state = { items: TodoStore.getTodoList() };
-    this.addItem = this.addItem.bind(this);
+    this.state = { items: store.getState() };
   }
 
   componentWillMount() {
-    TodoStore.addChangeListener(this.addItem);
+    this.removeListener = store.subscribe(() => {
+      this.setState({ items: store.getState() });
+    });
   }
 
   componentWillUnmount() {
-    TodoStore.removeChangeListener(this.addItem);
+    this.removeListener();
   }
 
   createItem(item) {
     return (<li>{ item }</li>);
-  }
-
-  addItem() {
-    this.setState({ items: TodoStore.getTodoList() });
   }
 
   render() {

@@ -1,40 +1,12 @@
-import EventEmitter from 'events';
-import { register } from '../dispatcher/todo-dispatcher';
 import * as Constants from '../constants';
+import { createStore } from 'redux';
 
-const STORE_CHANGE = 'store-change';
-
-const todoList = [];
-
-const TodoStore = Object.assign(EventEmitter.prototype, {
-
-  getTodoList() {
-    return todoList;
-  },
-
-  emitChange() {
-    this.emit(STORE_CHANGE);
-  },
-
-  addChangeListener(callback) {
-    this.on(STORE_CHANGE, callback);
-  },
-
-  removeChangeListener(callback) {
-    this.removeListener(STORE_CHANGE, callback);
-  },
-
-  _addItem(item) {
-    todoList.push(item);
-    TodoStore.emitChange();
+const reducer = (state = [], action) => {
+  if (action.type === Constants.ADD_ITEM) {
+    return [...state, action.item];
+  } else {
+    return state;
   }
+};
 
-});
-
-register((actionObject) => {
-  if (actionObject.actionType === Constants.ADD_ITEM) {
-    TodoStore._addItem(actionObject.item);
-  }
-});
-
-export default TodoStore;
+export const store = createStore(reducer);
