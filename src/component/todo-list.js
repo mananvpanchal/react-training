@@ -6,20 +6,31 @@ class TodoList extends React.Component {
   constructor() {
     super();
     this.state = { items: store.getState() };
+    this.addItem = this.addItem.bind(this);
   }
 
   componentWillMount() {
-    this.removeListener = store.subscribe(() => {
-      this.setState({ items: store.getState() });
-    });
+    store.subscribe(this.addItem);
   }
 
   componentWillUnmount() {
-    this.removeListener();
+    store.unsubscribe(this.addItem);
+  }
+
+  testUnsubscribe() {
+    store.unsubscribe(this.addItem);
+  }
+
+  testSubscribe() {
+    store.subscribe(this.addItem);
+  }
+
+  addItem() {
+    this.setState({ items: store.getState() });
   }
 
   createItem(item) {
-    return (<li>{ item }</li>);
+    return (<li key={item}>{ item }</li>);
   }
 
   render() {

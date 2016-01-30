@@ -8,8 +8,16 @@ class TodoApp extends React.Component {
     super();
   }
 
+  unsubscribe() {
+    this.refs.list.testUnsubscribe();
+  }
+
+  subscribe() {
+    this.refs.list.testSubscribe();
+  }
+
   render() {
-    return (<div><TodoInput /><TodoList /></div>);
+    return (<div><TodoInput unsubscribe={this.unsubscribe.bind(this)} subscribe={this.subscribe.bind(this)}/><TodoList ref="list"/></div>);
   }
 }
 export default TodoApp;
