@@ -23,7 +23,9 @@ class TodoList extends React.Component {
   }
 
   render() {
-    return (<div><ul>{ this.state.items.map(this.createItem) }</ul></div>);
+    return (<div><ul>{ this.state.items.map((item, i) => {
+      return (<li key={i}>{item}</li>);
+    }) }</ul></div>);
   }
 }
 export default TodoList;
