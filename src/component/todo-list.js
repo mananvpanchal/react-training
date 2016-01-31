@@ -1,31 +1,18 @@
 import React from 'react';
-import { store } from '../store/todo-store';
+import { connect } from 'react-redux';
 
-class TodoList extends React.Component {
+const mapStateToProps = (state) => {
+  return {
+    items: state
+  };
+};
 
-  constructor() {
-    super();
-    this.state = { items: store.getState() };
-  }
+let TodoList = ({ items }) => {
+  return (<div><ul>{ items.map((item, i) => {
+    return (<li key={i}>{item}</li>);
+  }) }</ul></div>);
+};
 
-  componentWillMount() {
-    this.removeListener = store.subscribe(() => {
-      this.setState({ items: store.getState() });
-    });
-  }
+TodoList = connect(mapStateToProps, null)(TodoList);
 
-  componentWillUnmount() {
-    this.removeListener();
-  }
-
-  createItem(item) {
-    return (<li>{ item }</li>);
-  }
-
-  render() {
-    return (<div><ul>{ this.state.items.map((item, i) => {
-      return (<li key={i}>{item}</li>);
-    }) }</ul></div>);
-  }
-}
 export default TodoList;

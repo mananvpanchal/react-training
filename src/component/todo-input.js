@@ -1,22 +1,18 @@
 import React from 'react';
-// import TodoAction from '../action/todo-action';
+import * as Constants from '../constants';
+import { connect } from 'react-redux';
 
-const TodoInput = ({ addItem }) => {
-  let input;
-  return (<div><input type="text" ref={(node) => { input = node; }}/><button onClick={() => { addItem(input.value); }}>Add</button></div>);
+const mapDisaptchToProps = (dispatch) => {
+  return {
+    onClickAddItem: (item) => { dispatch({ type: Constants.ADD_ITEM, item }); }
+  };
 };
-/* class TodoInput extends React.Component {
 
-  constructor() {
-    super();
-  }
+let TodoInput = ({ onClickAddItem }) => {
+  let inp;
+  return (<div><input type="text" ref={(node) => { inp = node; }}/><button onClick={() => { onClickAddItem.bind(null, inp.value)(); }}>Add</button></div>);
+};
 
-  addItem() {
-    TodoAction.addItem(this.refs.inp.value);
-  }
+TodoInput = connect(null, mapDisaptchToProps)(TodoInput);
 
-  render() {
-    return (<div><input type="text" ref="inp"/><button onClick={this.addItem.bind(this)}>Add</button></div>);
-  }
-}*/
 export default TodoInput;
