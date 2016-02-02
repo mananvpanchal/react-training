@@ -1,12 +1,17 @@
 import * as Constants from '../constants';
 
-const removeFromCart = (state = { name: 'Radio', prodquantity: 0, cartquantity: 0, price: 0, amount: 0 }, action) => {
+const removeFromCart = (state = {}, action) => {
   if (action.type === Constants.REMOVE_FROM_CART) {
-    const newState = {};
-    newState.prodquantity = state.prodquantity + 1;
-    newState.cartquantity = state.cartquantity - 1;
-    newState.amount = state.price * state.cartquantity;
-    return newState;
+    // console.log(state.prodquantity === undefined);
+    if (state.cartquantity === undefined || state.cartquantity === 0) {
+      return state;
+    } else {
+      return Object.assign({}, { name: action.name },
+      { price: state.price },
+      { prodquantity: state.prodquantity === undefined || state.prodquantity === 0 ? 0 : state.prodquantity + 1 },
+      { cartquantity: state.cartquantity === undefined ? 1 : state.cartquantity - 1 },
+      { amount: state.price === undefined ? 0 : state.price * (state.cartquantity === undefined ? 1 : state.cartquantity - 1) });
+    }
   } else {
     return state;
   }

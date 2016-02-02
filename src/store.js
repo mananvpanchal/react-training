@@ -1,7 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 // import reducers from './reducers';
-import addToCart from './reducers/add-to-cart';
-import removeFromCart from './reducers/remove-from-cart';
+import reducer from './reducers/add-to-cart';
 
-const reducer = combineReducers({ addToCart, removeFromCart });
 export const store = createStore(reducer);
