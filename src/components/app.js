@@ -7,7 +7,8 @@ class App extends React.Component {
     const name = 'Radio';
     const price = 50;
     const quantity = 10;
-    return (<div><ProductImpl name={name} price={price} quantity={quantity}/><CartImpl /></div>);
+    const cartQuantity = 0;
+    return (<div><ProductImpl name={name} price={price} quantity={quantity}/><CartImpl quantity={cartQuantity} /></div>);
   }
 }
 export default App;

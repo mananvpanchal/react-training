@@ -4,16 +4,13 @@ import { connect } from 'react-redux';
 
 const ProductImpl = connect(
   (state, { name, price, quantity }) => {
-    if (state.prodquantity === undefined) {
-      Object.assign(state, { prodquantity: quantity });
+    if(state.product.name === undefined) {
+      state.product = Object.assign({}, {name: name, price: price, quantity: quantity});
     }
-    if (state.price === undefined) {
-      Object.assign(state, { price });
-    }
-    console.log(state);
     return {
-      name, price, quantity: state.prodquantity
-    };
+      product: state.product,
+      cart: state.cart
+    }
   },
   (dispatch) => {
     return {

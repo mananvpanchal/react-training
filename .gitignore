@@ -2,3 +2,5 @@
 node_modules
 dist
 /.tern-port
+.idea
+react-train-seed.iml

@@ -2,11 +2,11 @@ import React from 'react';
 // import * as Constants from '../constants';
 // import { connect } from 'react-redux';
 
-const Product = ({ name, price, quantity, addToCart, removeFromCart }) => {
+const Product = ({ product, addToCart, removeFromCart }) => {
   return (<div>
-    Name: { name }<br/>Price: { price }<br/>Quantity: { quantity }<br/>
-    <button onClick={() => { addToCart(name); } }>Add To Cart</button>
-    <button onClick={() => { removeFromCart(name); } }>Remove From Cart</button>
+    Name: { product.name }<br/>Price: { product.price }<br/>Quantity: { product.quantity }<br/>
+    <button onClick={() => { addToCart(product.name); } }>Add To Cart</button>
+    <button onClick={() => { removeFromCart(product.name); } }>Remove From Cart</button>
     </div>);
 };
 

@@ -2,9 +2,13 @@ import Cart from '../components/cart';
 import { connect } from 'react-redux';
 
 const CartImpl = connect(
-  (state) => {
+  (state, { quantity }) => {
+    if(state.cart.quantity === undefined) {
+      state.cart = Object.assign({}, {quantity: quantity});
+    }
     return {
-      amount: state.amount, quantity: state.cartquantity
+      product: state.product,
+      cart: state.cart
     };
   },
   null

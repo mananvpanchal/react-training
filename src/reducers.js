@@ -1,4 +1,4 @@
-import addToCart from './reducers/add-to-cart';
-import removeFromCart from './reducers/remove-from-cart';
+import product from './reducers/product';
+import cart from './reducers/cart';
 
-export default { addToCart, removeFromCart };
+export default { product, cart };
