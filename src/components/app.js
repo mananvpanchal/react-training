@@ -1,14 +1,10 @@
 import React from 'react';
-import ProductImpl from './product-impl';
-import CartImpl from './cart-impl';
+import ProductList from './product-list';
+import Cart from './cart';
 
 class App extends React.Component {
-  render() {
-    const name = 'Radio';
-    const price = 50;
-    const quantity = 10;
-    const cartQuantity = 0;
-    return (<div><ProductImpl name={name} price={price} quantity={quantity}/><CartImpl quantity={cartQuantity} /></div>);
-  }
+    render() {
+        return (<div><ProductList /><Cart /></div>)
+    }
 }
 export default App;

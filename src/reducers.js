@@ -1,4 +1,4 @@
-import product from './reducers/product';
+import products from './reducers/products';
 import cart from './reducers/cart';
 
-export default { product, cart };
+export default { products, cart };
